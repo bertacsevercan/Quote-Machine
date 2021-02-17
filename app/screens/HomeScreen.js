@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native'
+import {View, Text, StyleSheet, Button} from 'react-native';
+
+import RNShake from "react-native-shake";
+import ShakeEventExpo from "../config/ShakeEventExpo"
 
 function HomeScreen(props) {
     const [quote, setQuote] = useState("");
@@ -13,7 +16,10 @@ function HomeScreen(props) {
     }
 
     useEffect(() => {
-       getData()
+       
+       ShakeEventExpo.addListener(() => {
+        getData()
+      });
       
     }, [isPressed]);
     
