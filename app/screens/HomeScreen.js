@@ -1,34 +1,53 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
+import RNPickerSelect from 'react-native-picker-select';
 
-import RNShake from "react-native-shake";
 import ShakeEventExpo from "../config/ShakeEventExpo"
+import Api from "../config/Api"
 
 function HomeScreen(props) {
     const [quote, setQuote] = useState("");
     const [isPressed, setIsPressed] = useState(0);
-    
+    const [api, setApi] = useState("");
+
     const getData =  async () => {
-        const data = await fetch("https://api.kanye.rest")
+        const data = await fetch(Api[api])
         const response = await data.json();
-        setQuote(response.quote);
-        console.log(response);
+        // switch case here for all the apis
+        if (api === "kanye" || api === "swift"){
+            setQuote(response.quote);
+        }
+        else {
+            setQuote(response[0]);
+        }
+        //console.log(response);
     }
 
     useEffect(() => {
-       
+        getData();
        ShakeEventExpo.addListener(() => {
-        getData()
+        setIsPressed(isPressed + 1)
+        //console.log(isPressed)
       });
       
-    }, [isPressed]);
+    }, [isPressed, api]);
     
     return (
         <View style={styles.container}>
-            <Button color="red" style={styles.button} title="Click me!" onPress={() => (
+            <Button color="red" style={styles.button} title="Click me!" onPress={() => {
                 setIsPressed(isPressed + 1)
-            )} />
+            }} />
+            <Text style={styles.header}>{api}</Text>
             <Text style={styles.text}>{quote}</Text>
+            <RNPickerSelect
+            style={styles.picker}
+            onValueChange={(value) => setApi(value)}
+            items={[
+                { label: 'Kanye West', value: 'kanye' },
+                { label: 'Ron Swanson', value: 'ron' },
+                { label: 'Taylor Swift', value: 'swift' },
+            ]}
+        />
         </View>
     );
 }
@@ -38,7 +57,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "white",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "space-around"
     },
     text: {
         marginHorizontal: 10
@@ -46,6 +65,16 @@ const styles = StyleSheet.create({
     button : {
         padding: 5,
         backgroundColor: "red",
+    },
+    picker: {
+        backgroundColor: "red",
+        color: "red",
+        paddingHorizontal: 10
+
+    },
+    header: {
+        fontSize: 20,
+        fontWeight: "bold"
     }
 })
 
