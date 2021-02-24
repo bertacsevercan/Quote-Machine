@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Platform } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import Button from "@ant-design/react-native/lib/button";
 import WingBlank from "@ant-design/react-native/lib/wing-blank";
 import ShakeEventExpo from "../config/ShakeEventExpo";
 import WhiteSpace from "@ant-design/react-native/lib/white-space";
-import { useFonts, LobsterTwo_400Regular_Italic } from "@expo-google-fonts/dev";
+import {
+  useFonts,
+  LobsterTwo_400Regular_Italic,
+  Orbitron_400Regular,
+} from "@expo-google-fonts/dev";
 
 import Api from "../config/Api";
 
 function HomeScreen(props) {
   const [fontsLoaded] = useFonts({
     LobsterTwo_400Regular_Italic,
+    Orbitron_400Regular,
   });
   const [quote, setQuote] = useState({
     quote: "",
@@ -72,24 +77,26 @@ function HomeScreen(props) {
   } else {
     return (
       <View style={styles.container}>
+        <Text style={styles.appName}>Quote Machine</Text>
         <WingBlank size="lg">
           <Button
             type="primary"
             onPress={() => {
               setIsPressed(isPressed + 1);
             }}
+            style={styles.generalText}
           >
             Press to generate a quote!
           </Button>
 
           <WhiteSpace size="xl" />
 
-          <Text>or shake your phone!</Text>
+          <Text style={styles.generalText}>or shake your phone!</Text>
         </WingBlank>
         <WingBlank size="lg">
           <WhiteSpace size="xl" />
           {api ? (
-            <View>
+            <View style={styles.quoteBox}>
               <Text style={styles.text}>
                 <Text style={styles.quotationMark}>&#x201C;</Text>
                 {quote.quote}
@@ -150,6 +157,20 @@ const styles = StyleSheet.create({
   quotationMark: {
     fontSize: 25,
     fontWeight: "bold",
+  },
+  quoteBox: {
+    borderColor: "grey",
+    borderWidth: 5,
+    padding: 10,
+  },
+  generalText: {
+    fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
+    fontSize: 20,
+  },
+  appName: {
+    fontSize: 20,
+    fontWeight: "bold",
+    fontFamily: "Orbitron_400Regular",
   },
 });
 
