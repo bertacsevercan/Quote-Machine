@@ -12,7 +12,7 @@ import {
 
 import Api from "../config/Api";
 
-function HomeScreen(props) {
+function HomeScreen() {
   const [fontsLoaded] = useFonts({
     LobsterTwo_400Regular_Italic,
     Orbitron_400Regular,
@@ -109,9 +109,36 @@ function HomeScreen(props) {
             ]}
           />
         </View>
+        <WingBlank size="sm">
+         
+         {api ? (
+           <View>
+             <View style={styles.quoteBox}>
+               <Text style={styles.text}>
+                 <Text style={styles.quotationMark}>&#x201C;</Text>
+                 {quote.quote}
+                 <Text style={styles.quotationMark}>&#x201D;</Text>
+               </Text>
+               <Text style={styles.header}>-{quote.author}</Text>
+             </View>
+             <Button
+               color="orange"
+               style={styles.button}
+               disabled={quote.quote ? false : true}
+               onPress={onShare}
+               title="Share &#128640;"
+             />
+           </View>
+         ) : (
+           <Text style={styles.generalText}>
+             Please choose an option &#128070;
+           </Text>
+         )}
+       </WingBlank>
+
         <WingBlank size="lg">
           <Button
-            color="darksalmon"
+            color="orange"
             title="Press to generate a quote!"
             onPress={() => {
               Vibration.vibrate(50)
@@ -120,36 +147,11 @@ function HomeScreen(props) {
             style={[styles.generalText, styles.button]}
           />
 
-          <WhiteSpace size="xl" />
+          <WhiteSpace size="sm" />
 
           <Text style={styles.generalText}>or shake your phone &#128075; </Text>
         </WingBlank>
-        <WingBlank size="lg">
-          <WhiteSpace size="xl" />
-          {api ? (
-            <View>
-              <View style={styles.quoteBox}>
-                <Text style={styles.text}>
-                  <Text style={styles.quotationMark}>&#x201C;</Text>
-                  {quote.quote}
-                  <Text style={styles.quotationMark}>&#x201D;</Text>
-                </Text>
-                <Text style={styles.header}>-{quote.author}</Text>
-              </View>
-              <Button
-                color="darksalmon"
-                style={styles.button}
-                disabled={quote.quote ? false : true}
-                onPress={onShare}
-                title="Share &#128640;"
-              />
-            </View>
-          ) : (
-            <Text style={styles.generalText}>
-              Please choose an option &#128070;
-            </Text>
-          )}
-        </WingBlank>
+       
       </View>
     );
   }
@@ -173,7 +175,7 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   picker: {
-    backgroundColor: "darksalmon",
+    backgroundColor: "orange",
     padding: 20,
     borderRadius: 25,
     width: Platform.OS === "android" ? "100%" : null,
@@ -190,11 +192,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   quoteBox: {
-    borderColor: "chocolate",
+    borderColor: "grey",
     borderWidth: 5,
     padding: 10,
+    marginLeft: 10,
+    marginRight : 10,
     marginBottom: 20,
-    backgroundColor: "wheat",
+    backgroundColor: "lightgrey",
     borderRadius: 10,
    
 
