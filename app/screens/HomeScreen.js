@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Platform, Button, Share } from "react-native";
+import { View, Text, StyleSheet, Platform, Button, Share, Vibration } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import WingBlank from "@ant-design/react-native/lib/wing-blank";
 import ShakeEventExpo from "../config/ShakeEventExpo";
@@ -68,6 +68,7 @@ function HomeScreen(props) {
     ShakeEventExpo.addListener(() => {
       setIsPressed(isPressed + 1);
       //console.log(isPressed)
+      Vibration.vibrate(100);
     });
   }, [isPressed, api]);
 
@@ -96,11 +97,24 @@ function HomeScreen(props) {
     return (
       <View style={styles.container}>
         <Text style={styles.appName}>Quote Machine</Text>
+        <View style={styles.picker}>
+          <RNPickerSelect
+            onValueChange={(value) => setApi(value)}
+            items={[
+              { label: "Kanye West", value: "kanye" },
+              { label: "Ron Swanson", value: "ron" },
+              { label: "Taylor Swift", value: "swift" },
+              { label: "Breaking Bad", value: "breakingBad" },
+              { label: "Random Quotes", value: "randomQuotes" },
+            ]}
+          />
+        </View>
         <WingBlank size="lg">
           <Button
-            color="#C4B92C"
+            color="darksalmon"
             title="Press to generate a quote!"
             onPress={() => {
+              Vibration.vibrate(50)
               setIsPressed(isPressed + 1);
             }}
             style={[styles.generalText, styles.button]}
@@ -108,7 +122,7 @@ function HomeScreen(props) {
 
           <WhiteSpace size="xl" />
 
-          <Text style={styles.generalText}>or shake your phone&#128075; </Text>
+          <Text style={styles.generalText}>or shake your phone &#128075; </Text>
         </WingBlank>
         <WingBlank size="lg">
           <WhiteSpace size="xl" />
@@ -123,7 +137,7 @@ function HomeScreen(props) {
                 <Text style={styles.header}>-{quote.author}</Text>
               </View>
               <Button
-                color="#C4B92C"
+                color="darksalmon"
                 style={styles.button}
                 disabled={quote.quote ? false : true}
                 onPress={onShare}
@@ -132,23 +146,10 @@ function HomeScreen(props) {
             </View>
           ) : (
             <Text style={styles.generalText}>
-              Please choose an option &#10549;
+              Please choose an option &#128070;
             </Text>
           )}
         </WingBlank>
-
-        <View style={styles.picker}>
-          <RNPickerSelect
-            onValueChange={(value) => setApi(value)}
-            items={[
-              { label: "Kanye West", value: "kanye" },
-              { label: "Ron Swanson", value: "ron" },
-              { label: "Taylor Swift", value: "swift" },
-              { label: "Breaking Bad", value: "breakingBad" },
-              { label: "Random Quotes", value: "randomQuotes" },
-            ]}
-          />
-        </View>
       </View>
     );
   }
@@ -166,13 +167,13 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     fontFamily: "LobsterTwo_400Regular_Italic",
     fontSize: 16,
-    color: "white",
+    color: "black",
   },
   button: {
     padding: 15,
   },
   picker: {
-    backgroundColor: "#C4B92C",
+    backgroundColor: "darksalmon",
     padding: 20,
     borderRadius: 25,
     width: Platform.OS === "android" ? "100%" : null,
@@ -182,17 +183,21 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     alignSelf: "flex-end",
     fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
-    color: "white",
+    color: "black",
   },
   quotationMark: {
     fontSize: 25,
     fontWeight: "bold",
   },
   quoteBox: {
-    borderColor: "grey",
+    borderColor: "chocolate",
     borderWidth: 5,
     padding: 10,
     marginBottom: 20,
+    backgroundColor: "wheat",
+    borderRadius: 10,
+   
+
   },
   generalText: {
     fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
