@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Platform, Button, Share, Vibration } from "react-native";
+import { View, Text, StyleSheet, Platform, Button, Share, Vibration, Image } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import WingBlank from "@ant-design/react-native/lib/wing-blank";
 import ShakeEventExpo from "../config/ShakeEventExpo";
 import WhiteSpace from "@ant-design/react-native/lib/white-space";
+import ActivityIndicator from "@ant-design/react-native/lib/activity-indicator";
 import {
   useFonts,
   LobsterTwo_400Regular_Italic,
@@ -96,7 +97,8 @@ function HomeScreen() {
   } else {
     return (
       <View style={styles.container}>
-        <Text style={styles.appName}>Quote Machine</Text>
+        {/* <Text style={styles.appName}>Quote Machine</Text> */}
+        <Image style={styles.logo} resizeMode="contain" source={require("../../assets/logo.png")} />
         <View style={styles.picker}>
           <RNPickerSelect
             onValueChange={(value) => setApi(value)}
@@ -115,11 +117,12 @@ function HomeScreen() {
            <View>
              <View style={styles.quoteBox}>
                <Text style={styles.text}>
-                 <Text style={styles.quotationMark}>&#x201C;</Text>
+                 {!!quote.quote && <Text style={styles.quotationMark}>&#x201C;</Text>}
                  {quote.quote}
-                 <Text style={styles.quotationMark}>&#x201D;</Text>
+                 <ActivityIndicator size="large" animating={!quote.quote} />
+                 {!!quote.quote && <Text style={styles.quotationMark}>&#x201D;</Text>}
                </Text>
-               <Text style={styles.header}>-{quote.author}</Text>
+               {!!quote.author && <Text style={styles.header}>-{quote.author}</Text>}
              </View>
              <Button
                color="orange"
@@ -141,7 +144,6 @@ function HomeScreen() {
             color="orange"
             title="Press to generate a quote!"
             onPress={() => {
-              Vibration.vibrate(50)
               setIsPressed(isPressed + 1);
             }}
             style={[styles.generalText, styles.button]}
@@ -163,6 +165,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
     alignItems: "center",
     justifyContent: "space-around",
+    padding: 20,
   },
   text: {
     marginHorizontal: 10,
@@ -215,6 +218,9 @@ const styles = StyleSheet.create({
     fontFamily: "Orbitron_400Regular",
     color: "white",
   },
+  logo: {
+    width : 300
+  }
 });
 
 export default HomeScreen;

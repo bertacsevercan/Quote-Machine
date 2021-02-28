@@ -1,6 +1,6 @@
 import { Accelerometer } from 'expo-sensors';
 //this is shake sensitivity - lowering this will give high sensitivity and increasing this will give lower sensitivity
-const THRESHOLD = 350;
+const THRESHOLD = 500;
 export default class ShakeEventExpo {
 static addListener(handler) {
 let
@@ -11,7 +11,7 @@ let lastUpdate = 0;
 Accelerometer.addListener(accelerometerData => {
 let { x, y, z } = accelerometerData;
 let currTime = Date.now();
-if ((currTime - lastUpdate) > 1000) {
+if ((currTime - lastUpdate) > 100) {
 let diffTime = (currTime - lastUpdate);
 lastUpdate = currTime;
 let speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
