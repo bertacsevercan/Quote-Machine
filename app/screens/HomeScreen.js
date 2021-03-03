@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Button, Share, Vibration, Image } from "react-native";
+import { View, Text, Share, Vibration, Image } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import WingBlank from "@ant-design/react-native/lib/wing-blank";
 import ShakeEventExpo from "../config/ShakeEventExpo";
@@ -14,6 +14,7 @@ import {
 import getData from "../services/getData";
 import styles from "../config/styles";
 import Api from "../config/Api";
+import AppButton from "../components/AppButton";
 
 function HomeScreen() {
   const [fontsLoaded] = useFonts({
@@ -94,10 +95,8 @@ function HomeScreen() {
                   <Text style={styles.header}>-{quote.author}</Text>
                 )}
               </View>
-              <Button
+              <AppButton
                 color="orange"
-                style={styles.button}
-                disabled={quote.quote ? false : true}
                 onPress={onShare}
                 title="Share &#128640;"
               />
@@ -108,15 +107,14 @@ function HomeScreen() {
             </Text>
           )}
         </WingBlank>
-
         <WingBlank size="lg">
-          <Button
+          <AppButton
             color="orange"
             title="Press to generate a quote!"
             onPress={() => {
               setIsPressed(isPressed + 1);
             }}
-            style={[styles.generalText, styles.button]}
+            border
           />
 
           <WhiteSpace size="sm" />
