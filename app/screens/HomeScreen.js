@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Share, Vibration, Image } from "react-native";
+import { View, Text, Share, Vibration, Image, StatusBar } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import WingBlank from "@ant-design/react-native/lib/wing-blank";
 import ShakeEventExpo from "../config/ShakeEventExpo";
@@ -60,6 +60,7 @@ function HomeScreen() {
   } else {
     return (
       <View style={styles.container}>
+        <StatusBar backgroundColor="black" barStyle="light-content" />
         <Image
           style={styles.logo}
           resizeMode="contain"
