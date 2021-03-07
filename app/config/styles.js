@@ -60,6 +60,10 @@ const styles = StyleSheet.create({
   logo: {
     width: 300,
   },
+  spinner : {
+    paddingLeft : 10,
+    paddingTop : 10
+  }
 });
 
 export default styles;
