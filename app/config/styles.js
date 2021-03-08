@@ -60,10 +60,35 @@ const styles = StyleSheet.create({
   logo: {
     width: 300,
   },
-  spinner : {
-    paddingLeft : 10,
-    paddingTop : 10
-  }
+  spinner: {
+    paddingLeft: 10,
+    paddingTop: 10,
+  },
 });
 
-export default styles;
+const pickerSelectStyles = StyleSheet.create({
+  inputIOS: {
+    fontSize: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    borderWidth: 3,
+    borderColor: "orange",
+    borderRadius: 25,
+    color: "orange",
+    paddingRight: 30, // to ensure the text is never behind the icon
+    paddingLeft: 30,
+  },
+  inputAndroid: {
+    fontSize: 16,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    borderWidth: 3,
+    borderColor: "orange",
+    borderRadius: 25,
+    color: "orange",
+    paddingRight: 30, // to ensure the text is never behind the icon
+    paddingLeft: 30,
+  },
+});
+
+export { styles, pickerSelectStyles };

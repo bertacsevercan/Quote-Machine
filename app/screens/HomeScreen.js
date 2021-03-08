@@ -20,7 +20,7 @@ import {
 } from "@expo-google-fonts/dev";
 
 import getData from "../services/getData";
-import styles from "../config/styles";
+import { styles, pickerSelectStyles } from "../config/styles";
 import Api from "../config/Api";
 import AppButton from "../components/AppButton";
 
@@ -75,7 +75,7 @@ function HomeScreen() {
           source={require("../../assets/logo.png")}
         />
 
-        <View /* style={styles.picker} */>
+        <View>
           <RNPickerSelect
             style={pickerSelectStyles}
             useNativeAndroidPickerStyle={false}
@@ -143,30 +143,5 @@ function HomeScreen() {
     );
   }
 }
-
-const pickerSelectStyles = StyleSheet.create({
-  inputIOS: {
-    fontSize: 16,
-    paddingVertical: 12,
-    paddingHorizontal: 10,
-    borderWidth: 3,
-    borderColor: "orange",
-    borderRadius: 25,
-    color: "orange",
-    paddingRight: 30, // to ensure the text is never behind the icon
-    paddingLeft: 30,
-  },
-  inputAndroid: {
-    fontSize: 16,
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    borderWidth: 3,
-    borderColor: "orange",
-    borderRadius: 25,
-    color: "orange",
-    paddingRight: 30, // to ensure the text is never behind the icon
-    paddingLeft: 30,
-  },
-});
 
 export default HomeScreen;
