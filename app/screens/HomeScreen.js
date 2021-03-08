@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Share, Vibration, Image, StatusBar, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  Share,
+  Vibration,
+  Image,
+  StatusBar,
+  StyleSheet,
+} from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import WingBlank from "@ant-design/react-native/lib/wing-blank";
 import ShakeEventExpo from "../config/ShakeEventExpo";
@@ -66,10 +74,10 @@ function HomeScreen() {
           resizeMode="contain"
           source={require("../../assets/logo.png")}
         />
-       
+
         <View /* style={styles.picker} */>
           <RNPickerSelect
-          style={pickerSelectStyles}
+            style={pickerSelectStyles}
             useNativeAndroidPickerStyle={false}
             onValueChange={(value) => setApi(value)}
             items={[
@@ -90,9 +98,13 @@ function HomeScreen() {
                     <Text style={styles.quotationMark}>&#x201C;</Text>
                   )}
                   {quote.quote}
-                  {!quote.quote ?  <View  style={styles.spinner}>
-                  <ActivityIndicator size="large" /* animating={!quote.quote}  *//>
-                  </View> : null}
+                  {!quote.quote ? (
+                    <View style={styles.spinner}>
+                      <ActivityIndicator
+                        size="large" /* animating={!quote.quote}  */
+                      />
+                    </View>
+                  ) : null}
                   {!!quote.quote && (
                     <Text style={styles.quotationMark}>&#x201D;</Text>
                   )}
@@ -132,29 +144,29 @@ function HomeScreen() {
   }
 }
 
-
 const pickerSelectStyles = StyleSheet.create({
   inputIOS: {
     fontSize: 16,
     paddingVertical: 12,
     paddingHorizontal: 10,
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 4,
-    color: 'black',
+    borderWidth: 3,
+    borderColor: "orange",
+    borderRadius: 25,
+    color: "orange",
     paddingRight: 30, // to ensure the text is never behind the icon
+    paddingLeft: 30,
   },
   inputAndroid: {
     fontSize: 16,
     paddingHorizontal: 10,
     paddingVertical: 8,
-    borderWidth: 0.5,
-    borderColor: 'purple',
-    borderRadius: 8,
-    color: 'black',
+    borderWidth: 3,
+    borderColor: "orange",
+    borderRadius: 25,
+    color: "orange",
     paddingRight: 30, // to ensure the text is never behind the icon
+    paddingLeft: 30,
   },
 });
 
 export default HomeScreen;
-
