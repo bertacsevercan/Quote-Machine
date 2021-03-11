@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "quoteMachine",
+    "name": "Quote Machine",
     "slug": "quoteMachine",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -17,13 +17,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.bertacandihab.quotemachine",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#000000"
-      }
+      },
+      "package":  "com.bertacandihab.quotemachine",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
