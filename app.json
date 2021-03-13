@@ -2,6 +2,7 @@
   "expo": {
     "name": "Quote Machine",
     "slug": "quoteMachine",
+    "description": "Random quotes from your favourite tv shows, people and authors.",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
