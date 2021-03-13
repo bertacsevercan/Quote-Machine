@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "white",
     alignSelf: "center",
+    paddingVertical: 10,
   },
   appName: {
     fontSize: 30,

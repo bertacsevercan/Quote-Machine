@@ -122,17 +122,18 @@ function HomeScreen() {
             Please choose an option &#128070;
           </Text>
         )}
+        <View>
+          <AppButton
+            color="orange"
+            title="Press to generate a quote!"
+            onPress={() => {
+              setIsPressed(isPressed + 1);
+            }}
+            border
+          />
 
-        <AppButton
-          color="orange"
-          title="Press to generate a quote!"
-          onPress={() => {
-            setIsPressed(isPressed + 1);
-          }}
-          border
-        />
-
-        <Text style={styles.generalText}>or shake your phone &#128075; </Text>
+          <Text style={styles.generalText}>or shake your phone &#128075; </Text>
+        </View>
       </View>
     );
   }
