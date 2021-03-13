@@ -9,10 +9,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
-import WingBlank from "@ant-design/react-native/lib/wing-blank";
 import ShakeEventExpo from "../config/ShakeEventExpo";
-import WhiteSpace from "@ant-design/react-native/lib/white-space";
-// import ActivityIndicator from "@ant-design/react-native/lib/activity-indicator";
 import {
   useFonts,
   LobsterTwo_400Regular_Italic,
@@ -89,56 +86,53 @@ function HomeScreen() {
             ]}
           />
         </View>
-        <WingBlank size="sm">
-          {api ? (
-            <View>
-              <View style={styles.quoteBox}>
-                <Text style={styles.text}>
-                  {!!quote.quote && (
-                    <Text style={styles.quotationMark}>&#x201C;</Text>
-                  )}
-                  {quote.quote}
-                  {!quote.quote ? (
-                    <View style={styles.spinner}>
-                      <ActivityIndicator
-                        size="large" /* animating={!quote.quote}  */
-                      />
-                    </View>
-                  ) : null}
-                  {!!quote.quote && (
-                    <Text style={styles.quotationMark}>&#x201D;</Text>
-                  )}
-                </Text>
-                {!!quote.author && (
-                  <Text style={styles.header}>-{quote.author}</Text>
+
+        {api ? (
+          <View>
+            <View style={styles.quoteBox}>
+              <Text style={styles.text}>
+                {!!quote.quote && (
+                  <Text style={styles.quotationMark}>&#x201C;</Text>
                 )}
-              </View>
-              <AppButton
-                color="orange"
-                onPress={onShare}
-                title="Share &#128640;"
-              />
+                {quote.quote}
+                {!quote.quote ? (
+                  <View style={styles.spinner}>
+                    <ActivityIndicator
+                      size="large"
+                      color="gray" /* animating={!quote.quote}  */
+                    />
+                  </View>
+                ) : null}
+                {!!quote.quote && (
+                  <Text style={styles.quotationMark}>&#x201D;</Text>
+                )}
+              </Text>
+              {!!quote.author && (
+                <Text style={styles.header}>-{quote.author}</Text>
+              )}
             </View>
-          ) : (
-            <Text style={styles.generalText}>
-              Please choose an option &#128070;
-            </Text>
-          )}
-        </WingBlank>
-        <WingBlank size="lg">
-          <AppButton
-            color="orange"
-            title="Press to generate a quote!"
-            onPress={() => {
-              setIsPressed(isPressed + 1);
-            }}
-            border
-          />
+            <AppButton
+              color="orange"
+              onPress={onShare}
+              title="Share &#128640;"
+            />
+          </View>
+        ) : (
+          <Text style={styles.generalText}>
+            Please choose an option &#128070;
+          </Text>
+        )}
 
-          <WhiteSpace size="sm" />
+        <AppButton
+          color="orange"
+          title="Press to generate a quote!"
+          onPress={() => {
+            setIsPressed(isPressed + 1);
+          }}
+          border
+        />
 
-          <Text style={styles.generalText}>or shake your phone &#128075; </Text>
-        </WingBlank>
+        <Text style={styles.generalText}>or shake your phone &#128075; </Text>
       </View>
     );
   }
