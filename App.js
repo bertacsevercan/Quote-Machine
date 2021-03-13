@@ -1,10 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React from "react";
 
-import HomeScreen from './app/screens/HomeScreen'
+import HomeScreen from "./app/screens/HomeScreen";
 
 export default function App() {
-  return (
-    <HomeScreen />
-  );
+  return <HomeScreen />;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TouchableOpacity, StyleSheet, Platform } from "react-native";
+import { Text, TouchableOpacity, StyleSheet } from "react-native";
 
 function AppButton({ onPress, title, color = "white", border }) {
   return (
