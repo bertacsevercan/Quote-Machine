@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Share, Vibration, Image, StatusBar } from "react-native";
+import {
+  View,
+  Text,
+  Share,
+  Vibration,
+  Image,
+  StatusBar,
+  ActivityIndicator,
+} from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import WingBlank from "@ant-design/react-native/lib/wing-blank";
 import ShakeEventExpo from "../config/ShakeEventExpo";
 import WhiteSpace from "@ant-design/react-native/lib/white-space";
-import ActivityIndicator from "@ant-design/react-native/lib/activity-indicator";
+// import ActivityIndicator from "@ant-design/react-native/lib/activity-indicator";
 import {
   useFonts,
   LobsterTwo_400Regular_Italic,
