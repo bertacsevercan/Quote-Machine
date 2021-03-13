@@ -7,6 +7,7 @@ import {
   Image,
   StatusBar,
   ActivityIndicator,
+  Alert,
 } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import ShakeEventExpo from "../config/ShakeEventExpo";
@@ -34,7 +35,16 @@ function HomeScreen() {
   const [api, setApi] = useState();
 
   useEffect(() => {
-    api ? getData(Api, api, setQuote) : null;
+    if (api) {
+      try {
+        getData(Api, api, setQuote);
+      } catch (error) {
+        Alert.alert(
+          "Ooops...",
+          "Looks like you're not connected to the internet!"
+        );
+      }
+    }
     ShakeEventExpo.addListener(() => {
       setIsPressed(isPressed + 1);
       Vibration.vibrate(100);
