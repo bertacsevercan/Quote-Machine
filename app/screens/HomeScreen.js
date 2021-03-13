@@ -142,7 +142,9 @@ function HomeScreen() {
             border
           />
 
-          <Text style={styles.generalText}>or shake your phone &#128075; </Text>
+          <Text style={styles.generalText}>
+            or shake your device &#128075;{" "}
+          </Text>
         </View>
       </View>
     );
