@@ -4,7 +4,7 @@
     "slug": "quoteMachine",
     "scheme": "quotemachine",
     "description": "Random quotes from your favourite tv shows, people and authors.",
-    "version": "1.0.2",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "privacy": "public",
