@@ -7,7 +7,6 @@ import {
   Image,
   StatusBar,
   ActivityIndicator,
-  Alert,
 } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import ShakeEventExpo from "../config/ShakeEventExpo";
@@ -16,6 +15,7 @@ import {
   LobsterTwo_400Regular_Italic,
   Orbitron_400Regular,
 } from "@expo-google-fonts/dev";
+import AppLoading from "expo-app-loading";
 
 import getData from "../services/getData";
 import { styles, pickerSelectStyles } from "../config/styles";
@@ -35,16 +35,7 @@ function HomeScreen() {
   const [api, setApi] = useState();
 
   useEffect(() => {
-    if (api) {
-      try {
-        getData(Api, api, setQuote);
-      } catch (error) {
-        Alert.alert(
-          "Ooops...",
-          "Looks like you're not connected to the internet!"
-        );
-      }
-    }
+    api ? getData(Api, api, setQuote) : null;
     ShakeEventExpo.addListener(() => {
       setIsPressed(isPressed + 1);
       Vibration.vibrate(100);
@@ -71,7 +62,7 @@ function HomeScreen() {
   };
 
   if (!fontsLoaded) {
-    return <Text>...</Text>;
+    return <AppLoading />;
   } else {
     return (
       <View style={styles.container}>
@@ -107,10 +98,7 @@ function HomeScreen() {
                 {quote.quote}
                 {!quote.quote ? (
                   <View style={styles.spinner}>
-                    <ActivityIndicator
-                      size="large"
-                      color="gray" /* animating={!quote.quote}  */
-                    />
+                    <ActivityIndicator size="large" color="gray" />
                   </View>
                 ) : null}
                 {!!quote.quote && (
@@ -134,6 +122,7 @@ function HomeScreen() {
         )}
         <View>
           <AppButton
+            disabled={api ? false : true}
             color="orange"
             title="Press to generate a quote!"
             onPress={() => {
