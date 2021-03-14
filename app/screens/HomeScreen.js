@@ -15,6 +15,7 @@ import {
   LobsterTwo_400Regular_Italic,
   Orbitron_400Regular,
 } from "@expo-google-fonts/dev";
+import AppLoading from "expo-app-loading";
 
 import getData from "../services/getData";
 import { styles, pickerSelectStyles } from "../config/styles";
@@ -61,7 +62,7 @@ function HomeScreen() {
   };
 
   if (!fontsLoaded) {
-    return <Text>...</Text>;
+    return <AppLoading />;
   } else {
     return (
       <View style={styles.container}>
