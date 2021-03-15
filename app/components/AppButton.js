@@ -1,5 +1,10 @@
 import React from "react";
 import { Text, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  useResponsiveHeight,
+  useResponsiveWidth,
+  responsiveFontSize,
+} from "react-native-responsive-dimensions";
 
 function AppButton({ onPress, title, color = "white", border, disabled }) {
   return (
@@ -26,12 +31,13 @@ function AppButton({ onPress, title, color = "white", border, disabled }) {
 const styles = StyleSheet.create({
   text: {
     textAlign: "center",
-    fontSize: 20,
+    fontSize: responsiveFontSize(2.5),
     padding: 20,
   },
   button: {
     borderWidth: 2,
     borderRadius: 35,
+    marginVertical: 10,
   },
   disabled: {
     borderColor: "gray",

@@ -1,4 +1,9 @@
 import { StyleSheet, Platform } from "react-native";
+import {
+  responsiveWidth,
+  responsiveFontSize,
+  responsiveHeight,
+} from "react-native-responsive-dimensions";
 
 const styles = StyleSheet.create({
   container: {
@@ -11,55 +16,46 @@ const styles = StyleSheet.create({
   text: {
     marginHorizontal: 10,
     alignItems: "flex-start",
-    fontFamily: "LobsterTwo_400Regular_Italic",
-    fontSize: 16,
+    fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
+    fontStyle: "italic",
+    fontSize: responsiveFontSize(2.5),
     color: "black",
   },
-  button: {
-    padding: 15,
-  },
-  picker: {
-    backgroundColor: "orange",
-    padding: 20,
-    borderRadius: 25,
-    width: Platform.OS === "android" ? "100%" : null,
-  },
   header: {
-    fontSize: 20,
+    fontSize: responsiveFontSize(2),
     fontWeight: "bold",
     alignSelf: "flex-end",
     fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
     color: "black",
   },
   quotationMark: {
-    fontSize: 25,
+    fontSize: responsiveFontSize(3),
     fontWeight: "bold",
+  },
+  quoteBoxWrapper: {
+    maxHeight: responsiveHeight(50),
+    padding: 10,
   },
   quoteBox: {
     borderColor: "grey",
     borderWidth: 5,
     padding: 10,
+    marginTop: 30,
     marginLeft: 10,
     marginRight: 10,
-    marginBottom: 20,
+    marginBottom: 10,
     backgroundColor: "lightgrey",
     borderRadius: 10,
   },
   generalText: {
     fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
-    fontSize: 20,
+    fontSize: responsiveFontSize(2.5),
     color: "white",
     alignSelf: "center",
     paddingVertical: 10,
   },
-  appName: {
-    fontSize: 30,
-    fontWeight: "bold",
-    fontFamily: "Orbitron_400Regular",
-    color: "white",
-  },
   logo: {
-    width: 300,
+    width: responsiveWidth(70),
   },
   spinner: {
     paddingLeft: 10,
@@ -69,7 +65,7 @@ const styles = StyleSheet.create({
 
 const pickerSelectStyles = StyleSheet.create({
   inputIOS: {
-    fontSize: 16,
+    fontSize: responsiveFontSize(2),
     paddingVertical: 12,
     paddingHorizontal: 10,
     borderWidth: 3,
@@ -80,7 +76,7 @@ const pickerSelectStyles = StyleSheet.create({
     paddingLeft: 30,
   },
   inputAndroid: {
-    fontSize: 16,
+    fontSize: responsiveFontSize(2),
     paddingHorizontal: 10,
     paddingVertical: 8,
     borderWidth: 3,

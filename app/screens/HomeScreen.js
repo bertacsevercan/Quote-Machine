@@ -7,26 +7,16 @@ import {
   Image,
   StatusBar,
   ActivityIndicator,
+  ScrollView,
 } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import ShakeEventExpo from "../config/ShakeEventExpo";
-import {
-  useFonts,
-  LobsterTwo_400Regular_Italic,
-  Orbitron_400Regular,
-} from "@expo-google-fonts/dev";
-import AppLoading from "expo-app-loading";
-
 import getData from "../services/getData";
 import { styles, pickerSelectStyles } from "../config/styles";
 import Api from "../config/Api";
 import AppButton from "../components/AppButton";
 
 function HomeScreen() {
-  const [fontsLoaded] = useFonts({
-    LobsterTwo_400Regular_Italic,
-    Orbitron_400Regular,
-  });
   const [quote, setQuote] = useState({
     quote: "",
     author: "",
@@ -61,83 +51,73 @@ function HomeScreen() {
     }
   };
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  } else {
-    return (
-      <View style={styles.container}>
-        <StatusBar backgroundColor="black" barStyle="light-content" />
-        <Image
-          style={styles.logo}
-          resizeMode="contain"
-          source={require("../../assets/logo.png")}
+  return (
+    <View style={styles.container}>
+      <StatusBar backgroundColor="black" barStyle="light-content" />
+      <Image
+        style={styles.logo}
+        resizeMode="contain"
+        source={require("../../assets/logo.png")}
+      />
+
+      <View>
+        <RNPickerSelect
+          style={pickerSelectStyles}
+          useNativeAndroidPickerStyle={false}
+          onValueChange={(value) => setApi(value)}
+          items={[
+            { label: "Kanye West", value: "kanye" },
+            { label: "Ron Swanson", value: "ron" },
+            { label: "Taylor Swift", value: "swift" },
+            { label: "Breaking Bad", value: "breakingBad" },
+            { label: "Random Quotes", value: "randomQuotes" },
+          ]}
+        />
+      </View>
+
+      {api ? (
+        <View>
+          <View style={styles.quoteBox}>
+            <Text style={styles.text}>
+              {!!quote.quote && (
+                <Text style={styles.quotationMark}>&#x201C;</Text>
+              )}
+              {quote.quote}
+              {!quote.quote ? (
+                <View style={styles.spinner}>
+                  <ActivityIndicator size="large" color="gray" />
+                </View>
+              ) : null}
+              {!!quote.quote && (
+                <Text style={styles.quotationMark}>&#x201D;</Text>
+              )}
+            </Text>
+            {!!quote.author && (
+              <Text style={styles.header}>-{quote.author}</Text>
+            )}
+          </View>
+          <AppButton color="orange" onPress={onShare} title="Share &#128640;" />
+        </View>
+      ) : (
+        <Text style={styles.generalText}>
+          Please choose an option &#128070;
+        </Text>
+      )}
+      <View>
+        <AppButton
+          disabled={api ? false : true}
+          color="orange"
+          title="Press to generate a quote!"
+          onPress={() => {
+            setIsPressed(isPressed + 1);
+          }}
+          border
         />
 
-        <View>
-          <RNPickerSelect
-            style={pickerSelectStyles}
-            useNativeAndroidPickerStyle={false}
-            onValueChange={(value) => setApi(value)}
-            items={[
-              { label: "Kanye West", value: "kanye" },
-              { label: "Ron Swanson", value: "ron" },
-              { label: "Taylor Swift", value: "swift" },
-              { label: "Breaking Bad", value: "breakingBad" },
-              { label: "Random Quotes", value: "randomQuotes" },
-            ]}
-          />
-        </View>
-
-        {api ? (
-          <View>
-            <View style={styles.quoteBox}>
-              <Text style={styles.text}>
-                {!!quote.quote && (
-                  <Text style={styles.quotationMark}>&#x201C;</Text>
-                )}
-                {quote.quote}
-                {!quote.quote ? (
-                  <View style={styles.spinner}>
-                    <ActivityIndicator size="large" color="gray" />
-                  </View>
-                ) : null}
-                {!!quote.quote && (
-                  <Text style={styles.quotationMark}>&#x201D;</Text>
-                )}
-              </Text>
-              {!!quote.author && (
-                <Text style={styles.header}>-{quote.author}</Text>
-              )}
-            </View>
-            <AppButton
-              color="orange"
-              onPress={onShare}
-              title="Share &#128640;"
-            />
-          </View>
-        ) : (
-          <Text style={styles.generalText}>
-            Please choose an option &#128070;
-          </Text>
-        )}
-        <View>
-          <AppButton
-            disabled={api ? false : true}
-            color="orange"
-            title="Press to generate a quote!"
-            onPress={() => {
-              setIsPressed(isPressed + 1);
-            }}
-            border
-          />
-
-          <Text style={styles.generalText}>
-            or shake your device &#128075;{" "}
-          </Text>
-        </View>
+        <Text style={styles.generalText}>or shake your device &#128075; </Text>
       </View>
-    );
-  }
+    </View>
+  );
 }
 
 export default HomeScreen;
