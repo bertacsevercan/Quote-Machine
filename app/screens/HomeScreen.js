@@ -96,7 +96,12 @@ function HomeScreen() {
               <Text style={styles.header}>-{quote.author}</Text>
             )}
           </View>
-          <AppButton color="orange" onPress={onShare} title="Share &#128640;" />
+          <AppButton
+            style={styles.shareButton}
+            color="orange"
+            onPress={onShare}
+            title="Share &#128640;"
+          />
         </View>
       ) : (
         <Text style={styles.generalText}>

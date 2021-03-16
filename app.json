@@ -4,7 +4,7 @@
     "slug": "quoteMachine",
     "scheme": "quotemachine",
     "description": "Random quotes from your favourite tv shows, people and authors.",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "privacy": "public",
@@ -22,7 +22,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.pizzabyte.quotemachine",
-      "buildNumber": "1.0.2"
+      "buildNumber": "1.0.3"
     },
     "android": {
       "adaptiveIcon": {
@@ -30,7 +30,7 @@
         "backgroundColor": "#000000"
       },
       "package":  "com.pizzabyte.quotemachine",
-      "versionCode": 2
+      "versionCode": 3
     },
     "web": {
       "favicon": "./assets/favicon.png"

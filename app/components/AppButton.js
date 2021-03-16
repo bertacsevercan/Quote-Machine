@@ -1,23 +1,27 @@
 import React from "react";
 import { Text, TouchableOpacity, StyleSheet } from "react-native";
-import {
-  useResponsiveHeight,
-  useResponsiveWidth,
-  responsiveFontSize,
-} from "react-native-responsive-dimensions";
+import { responsiveFontSize } from "react-native-responsive-dimensions";
 
-function AppButton({ onPress, title, color = "white", border, disabled }) {
+function AppButton({
+  onPress,
+  title,
+  color = "white",
+  border,
+  disabled,
+  style,
+}) {
   return (
     <TouchableOpacity
-      style={
+      style={[
         border
           ? [
               styles.button,
               { borderColor: color },
               disabled ? styles.disabled : null,
             ]
-          : null
-      }
+          : null,
+        style ? style : null,
+      ]}
       onPress={onPress}
       disabled={disabled}
     >
@@ -37,7 +41,6 @@ const styles = StyleSheet.create({
   button: {
     borderWidth: 2,
     borderRadius: 35,
-    marginVertical: 10,
   },
   disabled: {
     borderColor: "gray",

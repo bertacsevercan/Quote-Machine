@@ -33,10 +33,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   quoteBoxWrapper: {
-    maxHeight: responsiveHeight(50),
-    padding: 10,
+    maxHeight: responsiveHeight(40),
   },
   quoteBox: {
+    maxHeight: responsiveHeight(45),
     borderColor: "grey",
     borderWidth: 5,
     padding: 10,
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     fontSize: responsiveFontSize(2.5),
     color: "white",
     alignSelf: "center",
-    paddingVertical: 10,
+    paddingVertical: 5,
   },
   logo: {
     width: responsiveWidth(70),
@@ -60,6 +60,9 @@ const styles = StyleSheet.create({
   spinner: {
     paddingLeft: 10,
     paddingTop: 10,
+  },
+  shareButton: {
+    marginBottom: 40,
   },
 });
 
@@ -74,6 +77,7 @@ const pickerSelectStyles = StyleSheet.create({
     color: "orange",
     paddingRight: 30, // to ensure the text is never behind the icon
     paddingLeft: 30,
+    marginBottom: 30,
   },
   inputAndroid: {
     fontSize: responsiveFontSize(2),
@@ -85,6 +89,7 @@ const pickerSelectStyles = StyleSheet.create({
     color: "orange",
     paddingRight: 30, // to ensure the text is never behind the icon
     paddingLeft: 30,
+    marginBottom: 30,
   },
 });
 
