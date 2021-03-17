@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
     alignItems: "center",
     justifyContent: "space-around",
-    padding: 20,
+    padding: 5,
   },
   text: {
     marginHorizontal: 10,
@@ -33,10 +33,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   quoteBoxWrapper: {
-    maxHeight: responsiveHeight(40),
+    maxHeight: responsiveHeight(50),
   },
   quoteBox: {
-    maxHeight: responsiveHeight(45),
+    flexGrow: 0,
     borderColor: "grey",
     borderWidth: 5,
     padding: 10,
@@ -53,12 +53,13 @@ const styles = StyleSheet.create({
     color: "white",
     alignSelf: "center",
     paddingVertical: 5,
+    marginBottom: 5,
   },
   logo: {
     width: responsiveWidth(70),
   },
   spinner: {
-    paddingLeft: 10,
+    paddingLeft: 5,
     paddingTop: 10,
   },
   shareButton: {

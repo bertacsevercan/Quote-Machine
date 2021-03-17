@@ -1007,16 +1007,6 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@expo-google-fonts/dev@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/dev/-/dev-0.1.0.tgz#68fa1756d4596283968d1e6f618ddbd752c17eee"
-  integrity sha512-OiKO8z9rauIlWHGSJgbGyklbRJ07vEqhqM2rdcPy4LO98KEeFcpwV2cSHLrL3VFdWM/tpVQHYKDZVtwg+nDywQ==
-
-"@expo-google-fonts/lobster@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/lobster/-/lobster-0.1.0.tgz#b586b9df308eaeff717348c96f9da084327e252a"
-  integrity sha512-wUPuiVWgdsJDFHyyMQscryEh/FWrKdHmnhH6p09oUcVH3naHHG3qF0GoRJWeCQ1UIYHkW0NLOgi2iTl1/JubIQ==
-
 "@expo/babel-preset-cli@0.2.18":
   version "0.2.18"
   resolved "https://registry.yarnpkg.com/@expo/babel-preset-cli/-/babel-preset-cli-0.2.18.tgz#136acf8a0efe259e29ebc614b68552e5acb47d86"

@@ -76,8 +76,8 @@ function HomeScreen() {
       </View>
 
       {api ? (
-        <View>
-          <View style={styles.quoteBox}>
+        <View style={styles.quoteBoxWrapper}>
+          <ScrollView style={styles.quoteBox}>
             <Text style={styles.text}>
               {!!quote.quote && (
                 <Text style={styles.quotationMark}>&#x201C;</Text>
@@ -95,7 +95,7 @@ function HomeScreen() {
             {!!quote.author && (
               <Text style={styles.header}>-{quote.author}</Text>
             )}
-          </View>
+          </ScrollView>
           <AppButton
             style={styles.shareButton}
             color="orange"
