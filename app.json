@@ -30,7 +30,8 @@
         "backgroundColor": "#000000"
       },
       "package":  "com.pizzabyte.quotemachine",
-      "versionCode": 3
+      "versionCode": 3,
+      "permissions": []
     },
     "web": {
       "favicon": "./assets/favicon.png"
